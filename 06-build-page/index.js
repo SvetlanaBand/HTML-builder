@@ -54,6 +54,7 @@ async function createCSS(src, dst) {
 }
 
 async function copyDir(srcPath, dstPath) {
+    await fsPromises.rm(dstPath, { recursive: true, force: true });
   await fsPromises.mkdir(dstPath, { recursive: true });
   let files = await fsPromises.readdir(dstPath);
   for (let file of files) {
